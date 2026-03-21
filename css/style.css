@@ -1,0 +1,222 @@
+/* ===== THEME ===== */
+:root {
+  --bg-body: #f4f5f7;
+  --bg-surface: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --bg-body: #0f172a;
+  --bg-surface: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui;
+}
+
+/* ===== BODY ===== */
+body {
+  background: var(--bg-body);
+  color: var(--text-primary);
+}
+
+/* ===== LAYOUT ===== */
+.app-container {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  background: var(--bg-surface);
+  padding: 20px;
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar li {
+  padding: 10px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.sidebar li.active {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* ===== HEADER ===== */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: var(--bg-surface);
+}
+
+/* ===== SEARCH ===== */
+.search {
+  width: 200px;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: var(--border-color);
+}
+
+/* ===== USER ===== */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  padding: 20px;
+}
+
+/* ===== CONTROLS ===== */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#search-input {
+  width: 220px;
+  padding: 6px;
+}
+
+#status-filter {
+  width: 120px;
+}
+
+#theme-toggle {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== TABLE ===== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ===== STATUS ===== */
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.status-active {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.status-pending {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.status-churned {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  height: 140px;
+  background: var(--bg-surface);
+  border-radius: 12px;
+}
+
+/* ===== CHART ===== */
+.chart-container {
+  height: 300px;
+  margin-top: 20px;
+  background: var(--bg-surface);
+  padding: 15px;
+  border-radius: 12px;
+}
+/* HIDE MENU BUTTON DESKTOP */
+#menu-toggle {
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* SHOW MENU BUTTON */
+  #menu-toggle {
+    display: block;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  /* SIDEBAR HIDDEN */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 220px;
+    height: 100%;
+    z-index: 1000;
+    transition: 0.3s;
+  }
+
+  /* ACTIVE SIDEBAR */
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* OVERLAY (optional clean UI) */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+}
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
